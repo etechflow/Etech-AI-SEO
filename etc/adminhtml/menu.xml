@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Etechflow_AiSeo::aiseo" title="AI SEO" module="Etechflow_AiSeo" sortOrder="85"
+             parent="Magento_Backend::marketing" resource="Etechflow_AiSeo::aiseo"/>
+        <add id="Etechflow_AiSeo::suggestion" title="AI SEO Suggestions" module="Etechflow_AiSeo" sortOrder="10"
+             parent="Etechflow_AiSeo::aiseo" action="aiseo/suggestion/index" resource="Etechflow_AiSeo::suggestion"/>
+        <add id="Etechflow_AiSeo::config" title="Configuration" module="Etechflow_AiSeo" sortOrder="20"
+             parent="Etechflow_AiSeo::aiseo" action="adminhtml/system_config/edit/section/etechflow_aiseo" resource="Etechflow_AiSeo::config"/>
+    </menu>
+</config>

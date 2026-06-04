@@ -1,0 +1,12 @@
+{
+    "name": "etechflow/module-ai-seo",
+    "description": "AI-generated SEO meta titles and descriptions for Magento 2 products and categories.",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "version": "1.0.0",
+    "require": { "php": ">=8.1" },
+    "autoload": {
+        "files": ["registration.php"],
+        "psr-4": { "Etechflow\\AiSeo\\": "" }
+    }
+}

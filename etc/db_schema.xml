@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="etechflow_aiseo_suggestion" resource="default" engine="innodb" comment="Etechflow AI SEO Suggestions">
+        <column xsi:type="int" name="suggestion_id" unsigned="true" nullable="false" identity="true" comment="ID"/>
+        <column xsi:type="varchar" name="entity_type" nullable="false" length="32" default="product" comment="product|category"/>
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" comment="Entity ID"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" default="0" comment="Store"/>
+        <column xsi:type="varchar" name="current_meta_title" nullable="true" length="255" comment="Current meta title"/>
+        <column xsi:type="text" name="current_meta_description" nullable="true" comment="Current meta description"/>
+        <column xsi:type="varchar" name="suggested_meta_title" nullable="true" length="255" comment="AI meta title"/>
+        <column xsi:type="text" name="suggested_meta_description" nullable="true" comment="AI meta description"/>
+        <column xsi:type="varchar" name="status" nullable="false" length="20" default="pending" comment="pending|generated|applied|error"/>
+        <column xsi:type="text" name="message" nullable="true" comment="Error / note"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Updated"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="suggestion_id"/>
+        </constraint>
+        <index referenceId="ETECHFLOW_AISEO_SUGGESTION_ENTITY_TYPE_ENTITY_ID_STORE_ID" indexType="btree">
+            <column name="entity_type"/>
+            <column name="entity_id"/>
+            <column name="store_id"/>
+        </index>
+    </table>
+</schema>

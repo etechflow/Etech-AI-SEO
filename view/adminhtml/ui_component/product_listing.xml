@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <listingToolbar name="listing_top">
+        <massaction name="listing_massaction">
+            <action name="etechflow_aiseo_generate">
+                <settings>
+                    <confirm>
+                        <message translate="true">Generate AI SEO meta for the selected products?</message>
+                        <title translate="true">AI SEO</title>
+                    </confirm>
+                    <url path="aiseo/generate/massGenerate"/>
+                    <type>etechflow_aiseo_generate</type>
+                    <label translate="true">Generate AI Meta (Etechflow)</label>
+                </settings>
+            </action>
+        </massaction>
+    </listingToolbar>
+</listing>

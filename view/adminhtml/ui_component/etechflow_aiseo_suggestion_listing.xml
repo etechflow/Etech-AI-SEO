@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">etechflow_aiseo_suggestion_listing.etechflow_aiseo_suggestion_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>etechflow_aiseo_suggestion_columns</spinner>
+        <deps>
+            <dep>etechflow_aiseo_suggestion_listing.etechflow_aiseo_suggestion_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="etechflow_aiseo_suggestion_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Etechflow_AiSeo::suggestion</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="etechflow_aiseo_suggestion_listing_data_source">
+            <settings>
+                <requestFieldName>suggestion_id</requestFieldName>
+                <primaryFieldName>suggestion_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <massaction name="listing_massaction">
+            <action name="apply">
+                <settings>
+                    <confirm>
+                        <message translate="true">Apply selected suggestions to their products?</message>
+                        <title translate="true">Apply</title>
+                    </confirm>
+                    <url path="*/*/massApply"/>
+                    <type>apply</type>
+                    <label translate="true">Apply to products</label>
+                </settings>
+            </action>
+            <action name="delete">
+                <settings>
+                    <confirm>
+                        <message translate="true">Delete selected suggestions?</message>
+                        <title translate="true">Delete</title>
+                    </confirm>
+                    <url path="*/*/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <columns name="etechflow_aiseo_suggestion_columns">
+        <selectionsColumn name="ids">
+            <settings><indexField>suggestion_id</indexField></settings>
+        </selectionsColumn>
+        <column name="suggestion_id">
+            <settings><filter>textRange</filter><label translate="true">ID</label><sorting>desc</sorting></settings>
+        </column>
+        <column name="entity_id">
+            <settings><filter>textRange</filter><label translate="true">Product ID</label></settings>
+        </column>
+        <column name="suggested_meta_title">
+            <settings><filter>text</filter><label translate="true">AI Meta Title</label></settings>
+        </column>
+        <column name="suggested_meta_description">
+            <settings><filter>text</filter><label translate="true">AI Meta Description</label></settings>
+        </column>
+        <column name="current_meta_title">
+            <settings><filter>text</filter><label translate="true">Current Title</label><visible>false</visible></settings>
+        </column>
+        <column name="status">
+            <settings><filter>text</filter><label translate="true">Status</label></settings>
+        </column>
+        <column name="updated_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings><filter>dateRange</filter><dataType>date</dataType><label translate="true">Updated</label></settings>
+        </column>
+        <actionsColumn name="actions" class="Etechflow\AiSeo\Ui\Component\Listing\Column\SuggestionActions">
+            <settings><indexField>suggestion_id</indexField></settings>
+        </actionsColumn>
+    </columns>
+</listing>

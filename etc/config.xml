@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <etechflow_aiseo>
+            <general>
+                <enabled>0</enabled>
+                <provider>anthropic</provider>
+                <model>claude-sonnet-4-6</model>
+                <auto_apply>0</auto_apply>
+            </general>
+            <output>
+                <title_max>60</title_max>
+                <description_max>160</description_max>
+                <brand_tone>Professional, concise, benefit-led. UK English.</brand_tone>
+            </output>
+        </etechflow_aiseo>
+    </default>
+</config>

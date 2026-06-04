@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="etechflow" translate="label" sortOrder="400">
+            <label>Etechflow</label>
+        </tab>
+        <section id="etechflow_aiseo" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>AI SEO</label>
+            <tab>etechflow</tab>
+            <resource>Etechflow_AiSeo::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label tooltip" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable AI SEO</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip>Master switch for the AI meta-generation features.</tooltip>
+                </field>
+                <field id="provider" translate="label tooltip" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>AI provider</label>
+                    <source_model>Etechflow\AiSeo\Model\Config\Source\Provider</source_model>
+                    <tooltip>Which LLM API to call. Anthropic (Claude) or OpenAI (GPT).</tooltip>
+                </field>
+                <field id="model" translate="label comment tooltip" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Model</label>
+                    <comment>e.g. claude-sonnet-4-6 (Anthropic) or gpt-4o-mini (OpenAI)</comment>
+                    <tooltip>The model id sent to the provider. Pick a fast, inexpensive model for bulk runs.</tooltip>
+                </field>
+                <field id="api_key" translate="label tooltip" type="obscure" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API key</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                    <tooltip>Your provider API key. Stored encrypted.</tooltip>
+                </field>
+                <field id="auto_apply" translate="label tooltip" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Apply automatically</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <tooltip>If Yes, generated meta is written straight to the product. If No, it waits in the Suggestions grid for review.</tooltip>
+                </field>
+            </group>
+            <group id="output" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Output</label>
+                <field id="title_max" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max meta title length</label>
+                </field>
+                <field id="description_max" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max meta description length</label>
+                </field>
+                <field id="brand_tone" translate="label comment" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Brand voice / tone</label>
+                    <comment>Guidance added to the prompt (tone, language, do/don'ts).</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
