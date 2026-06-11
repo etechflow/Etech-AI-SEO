@@ -7,4 +7,17 @@
             </argument>
         </arguments>
     </type>
+    <virtualType name="Etechflow\AiSeo\Model\ResourceModel\Suggestion\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">etechflow_aiseo_suggestion</argument>
+            <argument name="resourceModel" xsi:type="string">Etechflow\AiSeo\Model\ResourceModel\Suggestion</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="etechflow_aiseo_suggestion_listing_data_source" xsi:type="string">Etechflow\AiSeo\Model\ResourceModel\Suggestion\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
