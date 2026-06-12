@@ -9,12 +9,14 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Magento\Framework\App\State;
 use Etechflow\AiSeo\Service\MetaGenerator;
+use Etechflow\AiSeo\Model\LicenseValidator;
 
 class GenerateCommand extends Command
 {
     public function __construct(
         private MetaGenerator $generator,
         private State $state,
+        private LicenseValidator $licenseValidator,
         ?string $name = null
     ) {
         parent::__construct($name);
@@ -33,6 +35,11 @@ class GenerateCommand extends Command
         try {
             $this->state->setAreaCode('adminhtml');
         } catch (\Throwable $e) {
+        }
+        if (!$this->licenseValidator->isValid()) {
+            $output->writeln('<error>AI SEO is not licensed for this host. Enter a valid licence key in '
+                . 'Stores > Config > Etechflow > AI SEO, or activate via the admin licence gate.</error>');
+            return Command::FAILURE;
         }
         $pid = (int)$input->getOption('product-id');
         if (!$pid) {

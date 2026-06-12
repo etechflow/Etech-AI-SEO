@@ -11,12 +11,21 @@ class Config
 {
     public function __construct(
         private ScopeConfigInterface $scopeConfig,
-        private EncryptorInterface $encryptor
+        private EncryptorInterface $encryptor,
+        private LicenseValidator $licenseValidator
     ) {
     }
 
+    /**
+     * The module is usable only when a valid licence is present AND the master
+     * switch is on. The licence is ALWAYS enforced — no environment toggle, no
+     * host bypass. On dev/staging, set a valid HMAC key (computeKey(host)).
+     */
     public function isEnabled($storeId = null): bool
     {
+        if (!$this->licenseValidator->isValid()) {
+            return false;
+        }
         return $this->scopeConfig->isSetFlag('etechflow_aiseo/general/enabled', ScopeInterface::SCOPE_STORE, $storeId);
     }
 
