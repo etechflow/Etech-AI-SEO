@@ -27,9 +27,9 @@ class Checkout extends Action
 
     /** Plan slugs -> [name, amount in cents, display]. Tier-based plans. */
     private const PLAN_INFO = [
-        'aiseo_starter'      => ['name' => 'AI SEO — Starter',      'amount' => 1900, 'display' => '$19/month'],
-        'aiseo_professional' => ['name' => 'AI SEO — Professional', 'amount' => 4900, 'display' => '$49/month'],
-        'aiseo_enterprise'   => ['name' => 'AI SEO — Enterprise',   'amount' => 9900, 'display' => '$99/month'],
+        'aiseo_weekly'  => ['name' => 'AI SEO — Weekly',  'amount' => 900,   'display' => '$9/week'],
+        'aiseo_monthly' => ['name' => 'AI SEO — Monthly', 'amount' => 2900,  'display' => '$29/month'],
+        'aiseo_yearly'  => ['name' => 'AI SEO — Yearly',  'amount' => 29000, 'display' => '$290/year'],
     ];
 
     public function __construct(
