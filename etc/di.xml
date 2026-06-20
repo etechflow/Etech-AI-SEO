@@ -7,6 +7,13 @@
             </argument>
         </arguments>
     </type>
+    <!--
+        Admin-grid data source MUST be registered in global etc/di.xml, never
+        etc/adminhtml/di.xml: an area-scoped CollectionFactory.collections
+        argument array-union REPLACES the entire global grid registry for that
+        area, silently breaking every other module's admin grid. Moved here from
+        etc/adminhtml/di.xml on 2026-06-11.
+    -->
     <virtualType name="Etechflow\AiSeo\Model\ResourceModel\Suggestion\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">etechflow_aiseo_suggestion</argument>

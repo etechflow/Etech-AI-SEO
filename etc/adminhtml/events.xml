@@ -1,6 +1,16 @@
 <?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="controller_action_predispatch_aiseo">
-        <observer name="etechflow_aiseo_license_gate" instance="Etechflow\AiSeo\Observer\AdminGate"/>
+        <observer name="etechflow_aiseo_license_gate"
+                  instance="Etechflow\AiSeo\Observer\AdminGate"/>
+    </event>
+    <event name="controller_action_predispatch_aiseo_suggestion_index">
+        <observer name="etechflow_aiseo_update_notification"
+                  instance="Etechflow\AiSeo\Observer\AddUpdateNotification"/>
+    </event>
+    <event name="controller_action_predispatch_adminhtml_system_config_edit">
+        <observer name="etechflow_aiseo_update_notification_sysconfig"
+                  instance="Etechflow\AiSeo\Observer\AddUpdateNotification"/>
     </event>
 </config>

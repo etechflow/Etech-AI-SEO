@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--
+        The admin-grid data source (CollectionFactory.collections) and its
+        SearchResult virtualType(s) were moved to the GLOBAL etc/di.xml on
+        2026-06-11. Declaring CollectionFactory.collections in an area-scoped
+        di.xml makes Magento's cross-area argument merge (array-union) REPLACE
+        the entire global grid registry for that area, silently breaking every
+        other module's admin grid. Grid data sources must always be registered
+        in global etc/di.xml. Do NOT re-add a CollectionFactory.collections
+        argument in this file.
+    -->
+</config>
