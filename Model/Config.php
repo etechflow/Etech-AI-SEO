@@ -19,7 +19,8 @@ class Config
     /**
      * The module is usable only when a valid licence is present AND the master
      * switch is on. The licence is ALWAYS enforced — no environment toggle, no
-     * host bypass. On dev/staging, set a valid HMAC key (computeKey(host)).
+     * host bypass. Activation requires a portal-issued (SP-) key validated by
+     * the licensing portal; the module ships no secret and cannot mint a key.
      */
     public function isEnabled($storeId = null): bool
     {
